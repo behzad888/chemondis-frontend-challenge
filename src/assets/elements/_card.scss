@@ -1,0 +1,12 @@
+@import "../tools/flexbox";
+.c-card {
+  @include flexbox();
+  @include flex-direction(row);
+  border-radius:$half-radius;
+  box-shadow: 0px 0 10px 1px lighten($color: $gray, $amount: 40%);
+  padding: 1rem;
+  &__header {
+    text-align: center;
+    font-weight: bold;
+  }
+}

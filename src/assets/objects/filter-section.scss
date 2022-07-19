@@ -1,0 +1,14 @@
+@import "../settings/variables", "../tools/flexbox";
+.c-filter {
+  @include flexbox;
+  padding: $padding-double-size;
+
+  &__title {
+    @include flex(1);
+  }
+  &__actions {
+    @include flex(1);
+    @include flexbox;
+    @include align-items(center);
+  }
+}

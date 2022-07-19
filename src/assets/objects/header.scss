@@ -1,0 +1,21 @@
+@import "../settings/variables", "../tools/flexbox";
+
+.c-header {
+  @include flexbox;
+  top: 0;
+  position: fixed;
+  height: $header-height;
+  width: 100%;
+  background-color: $light;
+  box-shadow: $box-shadow-bottom;
+
+  &--item {
+    padding: $padding-double-size;
+  }
+
+  &--title {
+    border-right: 1px solid $gray;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-lg;
+  }
+}

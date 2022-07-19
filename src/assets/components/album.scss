@@ -1,0 +1,110 @@
+@import "../tools/flexbox";
+@import "../settings/normalize";
+
+.c {
+  &-weather {
+    @include flex-content-align(center, center);
+    height: 100%;
+    background-color: $gray;
+
+    &__container {
+      @include flexbox();
+      background-color: $white;
+      width: 70%;
+      height: 80%;
+      border-radius: $standard-radius;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 15px 4px darken($color: $gray, $amount: 15);
+
+      &-image {
+        @include flex(1, 1, 40%);
+        width: 60%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: url("~@/assets/img/weather-bg.webp");
+        background-size: 100% 100%;
+        border-radius: $standard-radius;
+        box-shadow: 0px 0 5px 1px $gray;
+
+        &-content {
+          @include flex-content-align(center, flex-start);
+          background: rgba(0, 0, 0, 0.4);
+          border-radius: $standard-radius;
+          height: 100%;
+        }
+      }
+      &-content {
+        @include flex(1,1,20%);      
+      }
+    }
+  }
+
+  &-geo-navigation {
+    @include flex-content-align(center, center);
+    @include flex-direction(column);
+    padding: 1rem;
+    margin: 1rem;
+    color: $white;
+
+    &__title {
+      margin-bottom: 0.5rem;
+      font-size: 18px;
+    }
+    hr {
+      width: 50%;
+      height: 4px;
+      border-radius: 2rem;
+      background: white;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &-input-group {
+    @include flex-content-align(center, center);
+    @include flex-direction(column);
+    position: relative;
+    width: 100%;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill:$white;
+      
+      &.search {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+    }
+
+    .c-autocomplete {
+      top: 40px;
+    }
+  }
+
+  &-weather-info{
+    padding: 2rem;
+    h1{
+      font-size: 30px;
+    }
+
+    &__current{
+      @include flex-direction(column);
+      @include flexbox();
+      @include flex(1,1,auto);
+      padding: 1rem;
+      
+      &-image{
+        h2{
+          color: $gray;
+        }
+      }
+
+      &:first-child{
+        border-right: 3px solid $gray;
+      }
+    }
+  }
+}

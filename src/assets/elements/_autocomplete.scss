@@ -1,0 +1,23 @@
+.c-autocomplete {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  list-style-type: none;
+  border-radius: 0 0 $half-radius $half-radius;
+  width: 100%;
+
+  &__item {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &__current {
+    position: absolute;
+    cursor: pointer;
+    right: -35px;
+    top: 10px;
+  }
+}
