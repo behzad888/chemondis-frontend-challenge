@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 type AlbumFilterActionsProps = {};
 function AlbumFilterActions({}: AlbumFilterActionsProps) {
   return (
