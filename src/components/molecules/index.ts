@@ -1,1 +1,3 @@
-export * from './Searchbar'
+export * from "./Card";
+export * from "./Searchbar";
+

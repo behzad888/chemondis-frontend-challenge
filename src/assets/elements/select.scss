@@ -1,0 +1,10 @@
+@import "../settings/variables";
+
+.c-select{
+    border: none;
+    border-radius: $border-radius-standard;
+    width: 100%;
+    padding: $padding-standard;
+    color: $dark;
+    font-weight: bold;
+}

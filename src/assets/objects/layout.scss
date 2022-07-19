@@ -8,13 +8,6 @@
   src: local("Butler Medium"), url("../fonts/Butler_Medium.woff") format("woff");
 }
 
-@font-face {
-  font-family: "Butler Bold";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Butler Bold"), url("../fonts/Butler_Bold.woff") format("woff");
-}
-
 #root {
   height: 100%;
   font-family: "Butler Medium", Arial, Helvetica, sans-serif;
@@ -43,3 +36,15 @@
     }
   }
 }
+
+::-webkit-scrollbar {
+  width: 4px
+}
+::-webkit-scrollbar-track {
+  width: 6px
+}
+::-webkit-scrollbar-thumb {
+  background-color: $gray;
+  border-radius: 24px
+}
+

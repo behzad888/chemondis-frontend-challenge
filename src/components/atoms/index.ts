@@ -1,2 +1,4 @@
 export * from './Heading'
-export * from './Card'
+export * from './Image'
+export * from './Input'
+export * from './Select'
