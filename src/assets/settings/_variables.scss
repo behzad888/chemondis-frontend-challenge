@@ -1,14 +1,13 @@
-@use 'sass:math';
+@use "sass:math";
 
-$primary:#156AA7;
-$secondary:#E3E5E9;
+$primary: #156aa7;
+$secondary: #e3e5e9;
 $light: white;
-$dark:#2C3138;
-$gray: #C0B2BA;
+$dark: #2c3138;
+$gray: #c0b2ba;
 $black: black;
 
 $header-height: 45px;
-
 
 // scss-docs-start grid-breakpoints
 $grid-breakpoints: (
@@ -39,7 +38,6 @@ $font-weight-base: 200 !default;
 $font-weight-normal: $font-weight-base !default;
 $font-weight-bold: $font-weight-base * 3 !default;
 
-
 // Radius
 $border-radius-standard: 0.3rem !default;
 $border-radius-double-size: $border-radius-standard * 2;
@@ -47,3 +45,5 @@ $border-radius-largest-size: $border-radius-standard * 3;
 $border-radius-half-size: math.div($border-radius-standard, 2);
 
 $box-shadow-bottom: 0px 0px 5px 1px $gray;
+$box-shadow: 0px 2px 1px -1px darken($gray, 12%),
+  0px 1px 1px 0px darken($gray, 6%), 0px 1px 3px 0px darken($gray, 4%);

@@ -1,3 +1,12 @@
-.c-gallery{
-    
+@import "../settings/variables", "../tools/flexbox";
+
+.c-gallery {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(Min(100%, calc(2.5em * (1 + 3 / 1))), 1fr)
+  );
+  padding: $padding-double-size;
+  overflow-y: scroll;
 }
