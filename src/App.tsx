@@ -22,7 +22,7 @@ function App() {
       }
     };
     getAllUsers();
-  }, []);
+  }, [dispatch]);
 
   return (
     <Router>

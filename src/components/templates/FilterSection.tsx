@@ -1,17 +1,27 @@
+import { Heading } from "components/atoms";
+import { FilterActions } from "components/organisms";
+import { PageOption } from "utils";
+
 import "assets/objects/filter-section.scss";
 
-import { Heading } from "components/atoms";
-import { AlbumFilterActions } from "components/organisms";
-type FilterSectionProps = {};
+type FilterSectionProps = {
+  changeFilter: (pageOption: PageOption) => void;
+  title: string;
+  subText?: string;
+};
 
-export const FilterSection = ({}: FilterSectionProps) => {
+export const FilterSection = ({
+  title,
+  subText,
+  changeFilter,
+}: FilterSectionProps) => {
   return (
     <section className="c-filter">
       <div className="c-filter__title">
-        <Heading>Albums</Heading>
-        <span>View albums</span>
+        <Heading>{title}</Heading>
+        <span>{subText}</span>
       </div>
-        <AlbumFilterActions></AlbumFilterActions>      
+      <FilterActions onChangeFilter={changeFilter}></FilterActions>
     </section>
   );
 };

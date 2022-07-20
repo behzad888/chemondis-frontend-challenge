@@ -8,9 +8,14 @@ export interface User {
   color: string;
 }
 
-
 export interface UserState {
     loading: boolean,
     error: Error | string | null,
     data: Array<User>
+}
+
+
+export interface PageOption {
+  size: number,
+  page: number
 }

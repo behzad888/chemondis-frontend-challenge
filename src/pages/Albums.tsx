@@ -1,12 +1,26 @@
 import { FilterSection, GallerySection, Header } from "components/templates";
-import { Fragment } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
+import { defaultPageOption } from "utils";
 
 const Albums = () => {
+  const [albums, setAlbums] = useState([]);
+
+  const fetchAlbums = useCallback(async (pageOption = defaultPageOption) => {},
+  []);
+
+  useEffect(() => {
+    fetchAlbums();
+  }, []);
+
   return (
     <Fragment>
       <Header title="Frontend Challenge"></Header>
       <div className="c-container">
-        <FilterSection></FilterSection>
+        <FilterSection
+          title="Albums"
+          subText="View Albums"
+          changeFilter={fetchAlbums}
+        ></FilterSection>
         <GallerySection></GallerySection>
       </div>
       ;

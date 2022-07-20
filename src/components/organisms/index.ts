@@ -1,2 +1,2 @@
-export * from "./AlbumFilterActions";
+export * from "./FilterActions";
 export * from "./Searchbar";
