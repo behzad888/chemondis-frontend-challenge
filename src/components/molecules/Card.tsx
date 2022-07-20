@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { Image } from "components/atoms";
-import { forwardRef, ReactNode } from "react";
+import { forwardRef } from "react";
 
 import "assets/elements/card.scss";
+import { __DEV__ } from "utils";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   imageUrl?: string;
@@ -14,13 +15,17 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
 
   return (
     <div className="c-card" ref={ref} {...restProps}>
-      {(imageUrl || headerText) && <Image className="c-card__image" src={imageUrl} alt={headerText} />}
+      {(imageUrl || headerText) && (
+        <Image className="c-card__image" src={imageUrl} alt={headerText} />
+      )}
       {headerText && <div className="c-card__header">{headerText}</div>}
       <div className={clsx("c-card__body", className)}>{children}</div>
     </div>
   );
 });
 
-Card.displayName = "Card";
+if (__DEV__) {
+  Card.displayName = "Card";
+}
 
 export { Card };

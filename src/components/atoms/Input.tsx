@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import React, { ForwardedRef, forwardRef } from "react";
+import React, { forwardRef } from "react";
+import { __DEV__ } from "utils";
 
 import "assets/elements/input.scss";
 
@@ -18,6 +19,8 @@ const Input = forwardRef<HTMLInputElement, ControlPropsType>((props, ref) => {
   );
 });
 
-Input.displayName = "Input";
+if (__DEV__) {
+  Input.displayName = "Input";
+}
 
 export { Input };

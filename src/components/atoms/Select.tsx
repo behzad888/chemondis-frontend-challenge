@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import React, { forwardRef } from "react";
+import { __DEV__ } from "utils";
 
 import "assets/elements/select.scss";
 
@@ -18,5 +19,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   );
 });
 
-Select.displayName = "Select";
+if (__DEV__) {
+  Select.displayName = "Select";
+}
+
 export { Select };

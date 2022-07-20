@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { forwardRef } from "react";
+import { __DEV__ } from "utils";
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
@@ -11,6 +12,9 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   );
 });
 
-Image.displayName = "Image";
+if (__DEV__) {
+  Image.displayName = "Image";
+}
 
 export { Image };
+
