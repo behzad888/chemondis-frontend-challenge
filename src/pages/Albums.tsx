@@ -4,7 +4,7 @@ import { Fragment } from "react";
 const Albums = () => {
   return (
     <Fragment>
-      <Header title="Dashboard"></Header>
+      <Header title="Frontend Challenge"></Header>
       <div className="c-container">
         <FilterSection></FilterSection>
         <GallerySection></GallerySection>
