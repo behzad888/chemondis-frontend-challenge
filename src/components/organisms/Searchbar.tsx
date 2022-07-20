@@ -30,7 +30,7 @@ function Searchbar({ className }: SearhbarProps) {
       }
       items={userState.data}
       value={value}
-      placeholder="Select a user ..."
+      placeholder="Select User ..."
       onChange={handleChangeInput}
       onSelect={(value: User) => {
         onSelectedUser(value);
