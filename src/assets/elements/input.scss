@@ -1,11 +1,10 @@
 @import "../settings/variables";
 .c-input {
-    backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.3);
-    border: none;
-    border-radius: 0.4rem;
-    width: 100%;
-    padding: 0.5rem 0 0.5rem 0.5rem;
-    color: $light;
-    font-weight: bold;
-  }
+  background: $light;
+  border-radius: $border-radius-standard;
+  border: none;
+  width: 100%;
+  padding: $padding-double-size 0 $padding-double-size $padding-double-size;
+  color: $dark;
+  font-weight: $font-weight-bold;
+}
