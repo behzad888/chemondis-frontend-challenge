@@ -1,5 +1,7 @@
+import { Searchbar } from "components/organisms";
+
 import "assets/objects/header.scss";
-import { Searchbar } from "components/molecules";
+
 type HeaderProps = {
   title: string;
 };
