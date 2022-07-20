@@ -8,7 +8,12 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const { className, ...restProps } = props;
 
   return (
-    <img ref={ref} className={clsx("c-image", className)} {...restProps} />
+    <img
+      ref={ref}
+      className={clsx("c-image", className)}
+      loading="lazy"
+      {...restProps}
+    />
   );
 });
 
@@ -17,4 +22,3 @@ if (__DEV__) {
 }
 
 export { Image };
-
