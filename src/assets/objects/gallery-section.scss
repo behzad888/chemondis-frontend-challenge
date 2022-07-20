@@ -9,4 +9,8 @@
   );
   padding: $padding-double-size;
   overflow-y: scroll;
+
+  .c-card{
+    cursor: pointer;
+  }
 }

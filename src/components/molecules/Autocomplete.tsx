@@ -80,18 +80,8 @@ const Autocomplete = (props: AutocompletePropsType) => {
       if (onBlur) {
         onBlur(event);
       }
-      if (onSelect) onSelect(getItemValue(event.currentTarget.value) as any);
     },
-    [
-      inputRef,
-      options,
-      setOptions,
-      setIsOpen,
-      setHighlightedIndex,
-      getItemValue,
-      onBlur,
-      onSelect,
-    ]
+    [inputRef, options, setOptions, setIsOpen, setHighlightedIndex, onBlur]
   );
 
   const keyDownHandlers = useMemo(() => {
@@ -141,7 +131,7 @@ const Autocomplete = (props: AutocompletePropsType) => {
           setHighlightedIndex(null);
           inputRef.current &&
             inputRef.current.setSelectionRange(value.length, value.length);
-          if (onSelect) onSelect(value);
+          if (onSelect) onSelect(item);
           if (onChange) onChange(value);
         }
       },
@@ -202,7 +192,7 @@ const Autocomplete = (props: AutocompletePropsType) => {
       setOptions({ ...options, _ignoreBlur: false });
       setIsOpen(false);
       setHighlightedIndex(null);
-      if (onSelect) onSelect(value);
+      if (onSelect) onSelect(item);
       if (onChange) onChange(value);
     },
     [
@@ -224,9 +214,9 @@ const Autocomplete = (props: AutocompletePropsType) => {
             "c-autocomplete--item",
             highlightedIndex === index && "c-autocomplete--item--highlight"
           )}
-          key={`${item}${index}`}
+          key={`${getItemValue(item)}${index}`}
         >
-          {item}
+          {getItemValue(item)}
         </li>
       );
       return cloneElement(element, {
@@ -265,7 +255,13 @@ const Autocomplete = (props: AutocompletePropsType) => {
       onMouseEnter: () => setOptions({ ...options, _ignoreBlur: true }),
       onMouseLeave: () => setOptions({ ...options, _ignoreBlur: false }),
     });
-  }, [getFilteredItems, selectItemFromMouse, highlightedIndex, options]);
+  }, [
+    getFilteredItems,
+    selectItemFromMouse,
+    getItemValue,
+    highlightedIndex,
+    options,
+  ]);
 
   return (
     <>
@@ -278,7 +274,6 @@ const Autocomplete = (props: AutocompletePropsType) => {
         onBlur={handleInputBlur}
         onChange={(event) => {
           onChange && onChange(event.target.value as any);
-          onSelect && onSelect(getItemValue(event.target.value));
         }}
         aria-expanded={isOpen}
         onKeyDown={handleKeyDown}

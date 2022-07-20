@@ -19,7 +19,12 @@
     font-size: $font-size-lg;
   }
 
-  .c-search{
+  .c-skeleton {
     width: 20rem;
+  }
+  .c-search {
+    width: 20rem;
+    background-color: $secondary;
+    border-radius: 0;
   }
 }

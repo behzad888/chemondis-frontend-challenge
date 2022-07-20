@@ -1,0 +1,26 @@
+@import "../settings/variables";
+.c-skeleton {
+  opacity: 0.7;
+  box-shadow: none;
+  cursor: default;
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+  border-radius: $border-radius-standard;
+  border-color: $secondary;
+  background: padding-box $secondary;
+  animation: 0.8s linear 0s infinite alternate none running animation-fade;
+
+  div {
+    visibility: hidden;
+  }
+
+  @keyframes animation-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
