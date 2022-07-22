@@ -17,7 +17,17 @@
     height: 150px;
     width: 150px;
   }
-  @include media-breakpoint-down("sm") {
+
+  @include media-breakpoint-down("md") {
+    @include flex-direction(column-reverse);
+    &__owner,
+    &__title {
+      font-size: $font-size-lg;
+      padding: 0;
+    }
+    &__owner {
+      font-weight: $font-weight-base;
+    }
     .c-image {
       display: none;
     }
