@@ -15,6 +15,9 @@
     text-align: center;
     font-weight: $font-weight-bold;
     padding: $padding-standard;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   &__body {
     @include flex(1);

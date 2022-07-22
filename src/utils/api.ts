@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { randomColor } from "./assertion";
-import { User } from "./inline-typed";
+import { Album, User } from "./inline-typed";
 
 const APIClient = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}`,
@@ -20,7 +20,7 @@ async function getApi<T>(endpoint: string): Promise<T> {
   return normalizeResponse(resposne);
 }
 
-export async function getUsers(){
+export async function getUsers() {
   const response = await getApi<Array<User>>("users");
   return response.map((c) => {
     return {
@@ -28,4 +28,8 @@ export async function getUsers(){
       color: randomColor(),
     };
   });
+}
+
+export async function getAlbums(skip: number = 0, take: number = 20) {
+  return await getApi<Array<Album>>(`albums?_start=${skip}&_limit=${take}`);
 }

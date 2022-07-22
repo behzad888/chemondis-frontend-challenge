@@ -18,7 +18,7 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
       setPageOption(tempPageOption);
       onChangeFilter(tempPageOption);
     },
-    [setPageOption, pageOption]
+    [setPageOption, onChangeFilter, pageOption]
   );
 
   return (
