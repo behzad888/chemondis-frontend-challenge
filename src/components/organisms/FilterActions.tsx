@@ -16,6 +16,7 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
         page: 0,
         size: parseInt(currentTarget.value),
       };
+      setHasNextPage(true);
       onChangeFilter(tempPageOption);
       setPageOption(tempPageOption);
     },

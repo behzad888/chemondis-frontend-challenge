@@ -1,9 +1,9 @@
 import { Card } from "components/molecules";
 
 import "assets/objects/gallery-section.scss";
-import { Album, Photo, User } from "utils";
-import { useCallback, useState } from "react";
 import { Modal } from "components/atoms";
+import { useEffect, useState } from "react";
+import { Album, Photo, User } from "utils";
 import { PhotoInfoSection } from "./PhotoInfoSection";
 
 interface GallerySectionProps {
@@ -18,6 +18,21 @@ export const PhotoGallerySection = ({
   album,
 }: GallerySectionProps) => {
   const [showPhotoDetail, setShowPhotoDetail] = useState<Photo | null>(null);
+
+  useEffect(() => {
+    if (showPhotoDetail && !window.history.state.title) {
+      window.history.pushState(
+        { ...showPhotoDetail, isPhoto: true },
+        "",
+        window.location.href
+      );
+      window.onpopstate = (e) => {
+        if (window.history.state.isPhoto)
+          setShowPhotoDetail(window.history.state);
+        else setShowPhotoDetail(null);
+      };
+    }
+  }, [showPhotoDetail, setShowPhotoDetail]);
 
   return (
     <>
@@ -38,7 +53,7 @@ export const PhotoGallerySection = ({
         {items.map((item) => {
           return (
             <Card
-              onClick={() => setShowPhotoDetail(item)}
+            onClick={() => setShowPhotoDetail(item)}
               key={item.id}
               imageUrl={item.thumbnailUrl}
             >

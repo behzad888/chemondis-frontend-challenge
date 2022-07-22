@@ -9,6 +9,7 @@
     @include flex(1);
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
+    min-height: 150px;
   }
   &__header {
     @include flex(1);

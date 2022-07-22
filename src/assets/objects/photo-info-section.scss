@@ -13,6 +13,7 @@
   }
   .c-image {
     @include flex(1, 0, 0%);
+
   }
   &__title {
     @include three-dot(4);
