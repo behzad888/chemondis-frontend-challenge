@@ -1,0 +1,9 @@
+@import "../settings/variables", "../tools/flexbox";
+.c-album-info {
+  @include flexbox;
+  padding: $padding-double-size;
+
+  &__title {
+    @include flex(1);
+  }
+}

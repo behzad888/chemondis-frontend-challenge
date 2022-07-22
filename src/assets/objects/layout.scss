@@ -26,25 +26,28 @@
     @include media-breakpoint-up("lg") {
       padding: $padding-standard $padding-double-size * 3;
     }
-    
+
     @include media-breakpoint-down("md") {
       padding: $padding-standard $padding-double-size * 2;
     }
-    
+
     @include media-breakpoint-down("sm") {
       padding: $padding-standard $padding-double-size * 1;
+    }
+    > .c-card,
+    .c-filter {
+      background-color: $gray;
     }
   }
 }
 
 ::-webkit-scrollbar {
-  width: 4px
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
-  width: 6px
+  width: 6px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: $gray;
-  border-radius: 24px
+  border-radius: 24px;
 }
-

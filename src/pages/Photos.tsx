@@ -1,10 +1,12 @@
+import { Card } from "components/molecules";
 import {
+  AlbumInfoSection,
   FilterSection,
   Header,
   PhotoGallerySection,
 } from "components/templates";
 import { useAppSelector } from "hooks";
-import { Fragment, useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { defaultPageOption, getPhotos, Photo } from "utils";
 
@@ -12,7 +14,10 @@ const Photos = () => {
   const [albums, setPhotos] = useState<Array<Photo>>([]);
   const userState = useAppSelector((state) => state.userReducer);
   const { albumId, userId } = useParams();
-  const user = userState.data.find((c) => c.id === parseInt(userId || "0"));
+  const user = useMemo(
+    () => userState.data.find((c) => c.id === parseInt(userId || "0")),
+    [userState]
+  );
 
   const fetchPhotos = useCallback(
     async (pageOption = defaultPageOption) => {
@@ -38,13 +43,16 @@ const Photos = () => {
   return (
     <Fragment>
       <Header title="Frontend Challenge"></Header>
-      <div className="c-container">
-        <FilterSection
-          title="Photos"
-          subText="View Photos"
-          changeFilter={fetchPhotos}
-        ></FilterSection>
-        <PhotoGallerySection items={albums}></PhotoGallerySection>
+      <div className="c-container c-photo-page">
+        {user && <AlbumInfoSection user={user}></AlbumInfoSection>}
+        <Card>
+          <FilterSection
+            title="Photos"
+            subText="View Photos"
+            changeFilter={fetchPhotos}
+          ></FilterSection>
+        </Card>
+          <PhotoGallerySection items={albums}></PhotoGallerySection>
       </div>
     </Fragment>
   );
