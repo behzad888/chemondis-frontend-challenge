@@ -54,7 +54,9 @@ const Photos = () => {
     <Fragment>
       <Header title="Frontend Challenge"></Header>
       <div className="c-container c-photo-page">
-        {user && album && <AlbumInfoSection user={user} album={album}></AlbumInfoSection>}
+        {user && album && (
+          <AlbumInfoSection user={user} album={album}></AlbumInfoSection>
+        )}
         <Card>
           <FilterSection
             title="Photos"
@@ -62,7 +64,9 @@ const Photos = () => {
             changeFilter={fetchPhotos}
           ></FilterSection>
         </Card>
-        <PhotoGallerySection items={photos}></PhotoGallerySection>
+        {user && album &&(
+          <PhotoGallerySection items={photos} album={album} user={user}></PhotoGallerySection>
+        )}
       </div>
     </Fragment>
   );

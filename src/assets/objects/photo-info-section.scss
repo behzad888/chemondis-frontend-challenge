@@ -1,0 +1,25 @@
+@import "../settings/variables", "../tools/flexbox", "../tools/breakpoints", "../tools/_text_ellipsis";
+.c-photo-info {
+  @include flexbox;
+  width: 100%;
+  margin-top: 40px;
+
+  &__typography {
+    @include flex(1, 0, 0%);
+    padding: $padding-standard;
+  }
+  &__owner {
+    font-size: $font-size;
+  }
+  .c-image {
+    @include flex(1, 0, 0%);
+  }
+  &__title {
+    @include three-dot(4);
+    padding: 0;
+  }
+
+  @include media-breakpoint-down("sm") {
+    @include flex-direction(column);
+  }
+}

@@ -1,0 +1,54 @@
+@import "../tools/flexbox", "../settings/variables", "../tools/breakpoints", "../tools/_text_ellipsis";
+
+.c-modal {
+  @include flexbox;
+  @include flex-flow(column);
+  @include flex-direction(row);
+
+  box-shadow: $box-shadow;
+  background-color: $light;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  border-radius: $border-radius-standard;
+  padding: $padding-double-size;
+  width: auto;
+  height: 80%;
+
+  @include media-breakpoint-down("md") {
+    width: 80%;
+  }
+  @include media-breakpoint-down("sm") {
+    height: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__header {
+    @include flex-content-align(space-between, center);
+    @include flex(0, 1, auto);
+    
+    position: absolute;
+    padding: $padding-standard;
+    width: calc(100% - 1.8rem);
+    
+    &-title {
+      @include three-dot(1);
+      font-weight: $font-weight-bold;
+    }
+  }
+ 
+}
+
+.c-modal__backdrop {
+  background-color: $light;
+  opacity: 0.6;
+  @include flex-content-align(center, center);
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}

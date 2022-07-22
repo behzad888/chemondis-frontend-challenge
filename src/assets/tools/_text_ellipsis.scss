@@ -1,0 +1,7 @@
+@mixin three-dot($nol: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $nol;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

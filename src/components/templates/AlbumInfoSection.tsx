@@ -15,7 +15,10 @@ export const AlbumInfoSection = ({ user, album }: AlbumInfoSectionProps) => {
         {user.name} ({user.username})
       </Heading>
       <Heading className="c-album-info__title">{album?.title}</Heading>
-      <Image src={"https://via.placeholder.com/150/" + user.color} />
+      <Image
+        src={"https://via.placeholder.com/150/" + user.color}
+        alt={album.title}
+      />
     </section>
   );
 };

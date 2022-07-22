@@ -26,7 +26,7 @@ export const AlbumGallerySection = ({ items }: GallerySectionProps) => {
       {items.map((item) => {
         return (
           <Card
-          key={item.id}
+            key={item.id}
             onClick={() => goToPhotoPage(item)}
             headerText={item.title}
             imageUrl={`https://via.placeholder.com/150/${item.color}`}

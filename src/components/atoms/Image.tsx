@@ -2,7 +2,9 @@ import clsx from "clsx";
 import { forwardRef } from "react";
 import { __DEV__ } from "utils";
 
-interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
+interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  alt: string
+}
 
 const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const { className, ...restProps } = props;

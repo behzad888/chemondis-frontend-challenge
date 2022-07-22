@@ -16,7 +16,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   return (
     <div className="c-card" ref={ref} {...restProps}>
       {(imageUrl || headerText) && (
-        <Image className="c-card__image" src={imageUrl} alt={headerText} />
+        <Image className="c-card__image" src={imageUrl} alt={headerText!} />
       )}
       {headerText && <div className="c-card__header">{headerText}</div>}
       <div className={clsx("c-card__body", className)}>{children}</div>
@@ -27,5 +27,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>((props, ref) => {
 if (__DEV__) {
   Card.displayName = "Card";
 }
+
+Card.defaultProps = {
+  headerText: "",
+};
 
 export { Card };
