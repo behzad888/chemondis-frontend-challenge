@@ -1,11 +1,11 @@
 import { Heading } from "components/atoms";
 import { FilterActions } from "components/organisms";
-import { PageOption } from "utils";
+import { FetchWithNextPageFlag, PageOption } from "utils";
 
 import "assets/objects/filter-section.scss";
 
 type FilterSectionProps = {
-  changeFilter: (pageOption: PageOption) => void;
+  changeFilter: (pageOption: PageOption) => FetchWithNextPageFlag;
   title: string;
   subText?: string;
 };

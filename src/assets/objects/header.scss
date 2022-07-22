@@ -1,4 +1,4 @@
-@import "../settings/variables", "../tools/flexbox";
+@import "../settings/variables", "../tools/flexbox", "../tools/breakpoints";
 
 .c-header {
   @include flexbox;
@@ -26,5 +26,11 @@
     width: 20rem;
     background-color: $secondary;
     border-radius: 0;
+  }
+
+  @include media-breakpoint-down("sm") {
+    &--title,.c-search {
+      flex: 1;
+    }
   }
 }

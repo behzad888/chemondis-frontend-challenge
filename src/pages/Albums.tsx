@@ -1,7 +1,7 @@
 import { FilterSection, GallerySection, Header } from "components/templates";
 import { useAppSelector } from "hooks";
 import { Fragment, useCallback, useEffect, useState } from "react";
-import { defaultPageOption, GalleryItem, getAlbums } from "utils";
+import { defaultPageOption, FetchWithNextPageFlag, GalleryItem, getAlbums } from "utils";
 
 const Albums = () => {
   const [albums, setAlbums] = useState<Array<GalleryItem>>([]);
@@ -10,6 +10,10 @@ const Albums = () => {
   const fetchAlbums = useCallback(
     async (pageOption = defaultPageOption) => {
       const data = await getAlbums(pageOption.page, pageOption.size);
+      if (data.length <= 0 && pageOption.size > 0) {
+        pageOption.page -= pageOption.size;
+        return { hasNextPage: false };
+      }
       setAlbums(
         data.map((item) => {
           let user = userState.data.find((c) => c.id === item.userId)!;
@@ -20,6 +24,7 @@ const Albums = () => {
           };
         })
       );
+      return { hasNextPage: true };
     },
     [userState]
   );

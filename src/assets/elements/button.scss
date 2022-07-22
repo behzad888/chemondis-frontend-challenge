@@ -7,13 +7,15 @@
   border-radius: $border-radius-standard;
   color: $dark;
   cursor: pointer;
-  height: 100%;
   outline: none;
   border: none;
   white-space: nowrap;
-  background-color: darken($light, 10);
 
   &:hover:enabled {
     background-color: darken($light, 20);
+  }
+  &:disabled {
+    background-color: $gray;
+    cursor: no-drop;
   }
 }

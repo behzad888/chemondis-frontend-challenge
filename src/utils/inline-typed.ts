@@ -27,5 +27,6 @@ export interface PageOption {
 
 export interface GalleryItem extends Album {
   username?: string;
-  color: string
+  color: string;
 }
+export type FetchWithNextPageFlag = Promise<{ hasNextPage: boolean }>;

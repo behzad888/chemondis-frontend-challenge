@@ -10,5 +10,18 @@
     @include flex(1);
     @include flexbox;
     @include align-items(center);
+
+    .c-select {
+      flex: 4;
+    }
+
+    span{
+      margin-left: $margin-standard;
+    }
+
+    .c-btn {
+      margin-left: $margin-standard;
+      font-size: $font-size;
+    }
   }
 }
