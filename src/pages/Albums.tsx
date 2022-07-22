@@ -1,10 +1,10 @@
-import { FilterSection, GallerySection, Header } from "components/templates";
+import { FilterSection, AlbumGallerySection, Header } from "components/templates";
 import { useAppSelector } from "hooks";
 import { Fragment, useCallback, useEffect, useState } from "react";
-import { defaultPageOption, GalleryItem, getAlbums } from "utils";
+import { defaultPageOption, Album, getAlbums } from "utils";
 
 const Albums = () => {
-  const [albums, setAlbums] = useState<Array<GalleryItem>>([]);
+  const [albums, setAlbums] = useState<Array<Album>>([]);
   const userState = useAppSelector((state) => state.userReducer);
 
   const fetchAlbums = useCallback(
@@ -42,7 +42,7 @@ const Albums = () => {
           subText="View Albums"
           changeFilter={fetchAlbums}
         ></FilterSection>
-        <GallerySection items={albums}></GallerySection>
+        <AlbumGallerySection items={albums}></AlbumGallerySection>
       </div>
     </Fragment>
   );

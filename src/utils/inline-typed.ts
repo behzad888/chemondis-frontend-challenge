@@ -2,6 +2,15 @@ export interface Album {
   id: number;
   userId: number;
   title: string;
+  username?: string;
+  color?: string;
+}
+export interface Photo {
+  id: number;
+  albumId: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
 }
 
 export interface User {
@@ -25,8 +34,4 @@ export interface PageOption {
   page: number;
 }
 
-export interface GalleryItem extends Album {
-  username?: string;
-  color: string;
-}
 export type FetchWithNextPageFlag = Promise<{ hasNextPage: boolean }>;

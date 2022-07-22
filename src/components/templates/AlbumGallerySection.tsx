@@ -1,25 +1,26 @@
 import { Card } from "components/molecules";
+import { Link } from "react-router-dom";
 
 import "assets/objects/gallery-section.scss";
-import { GalleryItem } from "utils";
+import { Album } from "utils";
 
 interface GallerySectionProps {
-  items: Array<GalleryItem>;
+  items: Array<Album>;
 }
 
-export const GallerySection = ({ items }: GallerySectionProps) => {
+export const AlbumGallerySection = ({ items }: GallerySectionProps) => {
   return (
     <section className="c-gallery">
       {items.map((item) => {
         return (
-          <a href="#" key={item.id}>
+          <Link to={"/" + item.userId + "/" + item.id} key={item.id}>
             <Card
               headerText={item.title}
               imageUrl={`https://via.placeholder.com/150/${item.color}`}
             >
               {item.username}
             </Card>
-          </a>
+          </Link>
         );
       })}
     </section>

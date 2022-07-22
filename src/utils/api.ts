@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { randomColor } from "./assertion";
-import { Album, User } from "./inline-typed";
+import { Album, Photo, User } from "./inline-typed";
 
 const APIClient = axios.create({
   baseURL: `${process.env.REACT_APP_API_URL}`,
@@ -32,4 +32,7 @@ export async function getUsers() {
 
 export async function getAlbums(skip: number = 0, take: number = 20) {
   return await getApi<Array<Album>>(`albums?_start=${skip}&_limit=${take}`);
+}
+export async function getPhotos(albumId: number,skip: number = 0, take: number = 20) {
+  return await getApi<Array<Photo>>(`photos?albumId=${albumId}&_start=${skip}&_limit=${take}`);
 }

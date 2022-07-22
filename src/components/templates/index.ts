@@ -1,3 +1,4 @@
 export * from './PageHeader'
 export * from './FilterSection'
-export * from './GallerySection'
+export * from './AlbumGallerySection'
+export * from './PhotoGallerySection'

@@ -22,6 +22,11 @@
   &__body {
     @include flex(1);
     @include flex-content-align(flex-start, center);
-    padding: $padding-standard;
+    padding: 0 $padding-standard;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
