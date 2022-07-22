@@ -7,13 +7,18 @@ import {
 } from "components/templates";
 import { useAppSelector } from "hooks";
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
-import { defaultPageOption, getPhotos, Photo } from "utils";
+import { useLocation, useParams } from "react-router-dom";
+import { Album, defaultPageOption, getAlbum, getPhotos, Photo } from "utils";
 
 const Photos = () => {
-  const [albums, setPhotos] = useState<Array<Photo>>([]);
-  const userState = useAppSelector((state) => state.userReducer);
   const { albumId, userId } = useParams();
+  const location = useLocation();
+
+  const [photos, setPhotos] = useState<Array<Photo>>([]);
+
+  const [album, setAlbum] = useState<Album | null>(location.state as any);
+  const userState = useAppSelector((state) => state.userReducer);
+
   const user = useMemo(
     () => userState.data.find((c) => c.id === parseInt(userId || "0")),
     [userState]
@@ -33,18 +38,23 @@ const Photos = () => {
       setPhotos(data);
       return { hasNextPage: true };
     },
-    [userState, albumId, userId]
+    [albumId, userId]
   );
+  const fetchAlbum = useCallback(async () => {
+    const data = await getAlbum(parseInt(albumId!));
+    setAlbum(data);
+  }, [albumId]);
 
   useEffect(() => {
-    if (!userState.loading) fetchPhotos();
-  }, [userState]);
+    fetchPhotos();
+    if (!location.state) fetchAlbum();
+  }, []);
 
   return (
     <Fragment>
       <Header title="Frontend Challenge"></Header>
       <div className="c-container c-photo-page">
-        {user && <AlbumInfoSection user={user}></AlbumInfoSection>}
+        {user && album && <AlbumInfoSection user={user} album={album}></AlbumInfoSection>}
         <Card>
           <FilterSection
             title="Photos"
@@ -52,7 +62,7 @@ const Photos = () => {
             changeFilter={fetchPhotos}
           ></FilterSection>
         </Card>
-          <PhotoGallerySection items={albums}></PhotoGallerySection>
+        <PhotoGallerySection items={photos}></PhotoGallerySection>
       </div>
     </Fragment>
   );

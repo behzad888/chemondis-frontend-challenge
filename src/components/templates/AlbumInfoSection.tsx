@@ -1,23 +1,26 @@
 import { Heading, Image } from "components/atoms";
-import { FilterActions } from "components/organisms";
-import { FetchWithNextPageFlag, PageOption, User } from "utils";
+import { Album, User } from "utils";
 
 import "assets/objects/album-info-section.scss";
 
 type AlbumInfoSectionProps = {
   user: User;
+  album: Album;
 };
 
-export const AlbumInfoSection = ({ user }: AlbumInfoSectionProps) => {
+export const AlbumInfoSection = ({ user, album }: AlbumInfoSectionProps) => {
   return (
     <section className="c-album-info">
-      <div className="c-album-info__title">
-        <Heading>{user.name}</Heading>
+      <div className="c-album-info__owner">
+        <Heading>
+          {user.name} ({user.username})
+        </Heading>
         <span>{user.website}</span>
       </div>
-      <div>
-        <Image src={"https://via.placeholder.com/150/" + user.color} />
+      <div className="c-album-info__title">
+        <Heading>{album?.title}</Heading>
       </div>
+      <Image src={"https://via.placeholder.com/150/" + user.color} />
     </section>
   );
 };

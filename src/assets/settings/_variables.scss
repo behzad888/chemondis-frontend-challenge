@@ -32,6 +32,7 @@ $margin-half-size: math.div($margin-standard, 2);
 // Font size
 $font-size: 0.85rem;
 $font-size-lg: $font-size * 1.15 !default;
+$font-size-xl: $font-size * 1.75 !default;
 
 // Font weight
 $font-weight-base: 200 !default;

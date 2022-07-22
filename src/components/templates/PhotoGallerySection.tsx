@@ -11,7 +11,11 @@ export const PhotoGallerySection = ({ items }: GallerySectionProps) => {
   return (
     <section className="c-gallery">
       {items.map((item) => {
-        return <Card imageUrl={item.thumbnailUrl}>{item.title}</Card>;
+        return (
+          <Card key={item.id} imageUrl={item.thumbnailUrl}>
+            {item.title}
+          </Card>
+        );
       })}
     </section>
   );

@@ -1,9 +1,25 @@
-@import "../settings/variables", "../tools/flexbox";
+@import "../settings/variables", "../tools/flexbox", "../tools/breakpoints";
 .c-album-info {
-  @include flexbox;
+  @include flex-content-align(center, center);
   padding: $padding-double-size;
 
+  &__owner,
   &__title {
-    @include flex(1);
+    @include flex(1, 0, 0%);
+    padding: $padding-double-size;
+  }
+  &__title {
+    @include flex(1, 0, 50%);
+    font-size: $font-size-xl;
+    text-align: center;
+  }
+  .c-image {
+    height: 150px;
+    width: 150px;
+  }
+  @include media-breakpoint-down("sm") {
+    .c-image {
+      display: none;
+    }
   }
 }

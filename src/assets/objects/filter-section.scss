@@ -1,4 +1,4 @@
-@import "../settings/variables", "../tools/flexbox";
+@import "../settings/variables", "../tools/flexbox", "../tools/breakpoints";
 .c-filter {
   @include flexbox;
   padding: $padding-double-size;
@@ -22,6 +22,11 @@
     .c-btn {
       margin-left: $margin-standard;
       font-size: $font-size;
+    }
+    @include media-breakpoint-down("sm") {
+      .c-btn {
+        margin-left: $margin-half-size;
+      }
     }
   }
 }
