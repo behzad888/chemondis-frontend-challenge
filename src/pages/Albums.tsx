@@ -1,7 +1,7 @@
 import { FilterSection, GallerySection, Header } from "components/templates";
 import { useAppSelector } from "hooks";
 import { Fragment, useCallback, useEffect, useState } from "react";
-import { defaultPageOption, FetchWithNextPageFlag, GalleryItem, getAlbums } from "utils";
+import { defaultPageOption, GalleryItem, getAlbums } from "utils";
 
 const Albums = () => {
   const [albums, setAlbums] = useState<Array<GalleryItem>>([]);
@@ -19,7 +19,7 @@ const Albums = () => {
           let user = userState.data.find((c) => c.id === item.userId)!;
           return {
             ...item,
-            username: user.name,
+            username: user.username,
             color: user.color,
           };
         })
