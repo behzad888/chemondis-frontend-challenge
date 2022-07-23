@@ -11,13 +11,13 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
   const [hasNextPage, setHasNextPage] = useState(true);
 
   const onChangePageSize = useCallback(
-    ({ currentTarget }: React.ChangeEvent<HTMLSelectElement>) => {
+    async ({ currentTarget }: React.ChangeEvent<HTMLSelectElement>) => {
       let tempPageOption = {
         page: 0,
         size: parseInt(currentTarget.value),
       };
-      setHasNextPage(true);
-      onChangeFilter(tempPageOption);
+      const hasNextPage = await onChangeFilter(tempPageOption);
+      if (hasNextPage) setHasNextPage(true);
       setPageOption(tempPageOption);
     },
     [setPageOption, onChangeFilter]
@@ -31,15 +31,16 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
 
       switch (action) {
         case "next":
-          tempPageOption.page += tempPageOption.size;
+          tempPageOption.page += 1;
           break;
         case "prev":
-          tempPageOption.page -= tempPageOption.size;
+          tempPageOption.page -= 1;
           setHasNextPage(true);
           break;
         default:
           break;
       }
+
       if ((await onChangeFilter(tempPageOption)).hasNextPage)
         setPageOption(tempPageOption);
       else setHasNextPage(false);
@@ -50,7 +51,11 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
   return (
     <div className="c-filter__actions">
       <label htmlFor="page-size">Page Size: </label>
-      <Select id="page-size" value={pageOption.size} onChange={onChangePageSize}>
+      <Select
+        id="page-size"
+        value={pageOption.size}
+        onChange={onChangePageSize}
+      >
         <option value={20}>20</option>
         <option value={30}>30</option>
         <option value={50}>50</option>
@@ -61,7 +66,7 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
       >
         Prev
       </Button>
-      <span>Page: {pageOption.page / pageOption.size + 1}</span>
+      <span>Page: {pageOption.page + 1}</span>
       <Button disabled={!hasNextPage} onClick={() => onChangePage("next")}>
         Next
       </Button>
