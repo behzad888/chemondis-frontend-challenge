@@ -13,7 +13,13 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
   const { className, children, ...restProps } = props;
 
   return (
-    <select ref={ref} className={clsx("c-select", className)} {...restProps}>
+    <select
+      role="listbox"
+      ref={ref}
+      className={clsx("c-select", className)}
+      aria-disabled={restProps.disabled}
+      {...restProps}
+    >
       {children}
     </select>
   );

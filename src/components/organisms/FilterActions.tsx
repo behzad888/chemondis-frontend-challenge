@@ -49,8 +49,8 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
 
   return (
     <div className="c-filter__actions">
-      <span>Page Size: </span>
-      <Select value={pageOption.size} onChange={onChangePageSize}>
+      <label htmlFor="page-size">Page Size: </label>
+      <Select id="page-size" value={pageOption.size} onChange={onChangePageSize}>
         <option value={20}>20</option>
         <option value={30}>30</option>
         <option value={50}>50</option>
