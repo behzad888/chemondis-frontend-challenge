@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  react-app:
+    container_name: frontend-challenge
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "./:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    ports:
+      - 3000:3000
+    environment:
+      - PORT=3000
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
