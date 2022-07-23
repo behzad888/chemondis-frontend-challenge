@@ -29,7 +29,8 @@
   }
 
   @include media-breakpoint-down("sm") {
-    &--title,.c-search {
+    &--title,
+    .c-search {
       flex: 1;
     }
   }

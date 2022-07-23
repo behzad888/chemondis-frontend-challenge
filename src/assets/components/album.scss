@@ -36,7 +36,7 @@
         }
       }
       &-content {
-        @include flex(1,1,20%);      
+        @include flex(1, 1, 20%);
       }
     }
   }
@@ -70,8 +70,8 @@
     svg {
       width: 20px;
       height: 20px;
-      fill:$white;
-      
+      fill: $white;
+
       &.search {
         position: absolute;
         right: 10px;
@@ -84,25 +84,25 @@
     }
   }
 
-  &-weather-info{
+  &-weather-info {
     padding: 2rem;
-    h1{
+    h1 {
       font-size: 30px;
     }
 
-    &__current{
+    &__current {
       @include flex-direction(column);
       @include flexbox();
-      @include flex(1,1,auto);
+      @include flex(1, 1, auto);
       padding: 1rem;
-      
-      &-image{
-        h2{
+
+      &-image {
+        h2 {
           color: $gray;
         }
       }
 
-      &:first-child{
+      &:first-child {
         border-right: 3px solid $gray;
       }
     }

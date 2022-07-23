@@ -1,4 +1,5 @@
-@import "../settings/variables", "../tools/flexbox", "../tools/breakpoints", "../tools/_text_ellipsis";
+@import "../settings/variables", "../tools/flexbox", "../tools/breakpoints",
+  "../tools/_text_ellipsis";
 .c-photo-info {
   @include flexbox;
   width: 100%;
@@ -13,7 +14,6 @@
   }
   .c-image {
     @include flex(1, 0, 0%);
-
   }
   &__title {
     @include three-dot(4);

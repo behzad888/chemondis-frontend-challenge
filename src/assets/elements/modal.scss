@@ -1,4 +1,5 @@
-@import "../tools/flexbox", "../settings/variables", "../tools/breakpoints", "../tools/_text_ellipsis";
+@import "../tools/flexbox", "../settings/variables", "../tools/breakpoints",
+  "../tools/_text_ellipsis";
 
 .c-modal {
   @include flexbox;
@@ -28,17 +29,16 @@
   &__header {
     @include flex-content-align(space-between, center);
     @include flex(0, 1, auto);
-    
+
     position: absolute;
     padding: $padding-standard;
     width: calc(100% - 1.8rem);
-    
+
     &-title {
       @include three-dot(1);
       font-weight: $font-weight-bold;
     }
   }
- 
 }
 
 .c-modal__backdrop {
