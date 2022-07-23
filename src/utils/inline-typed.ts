@@ -34,4 +34,4 @@ export interface PageOption {
   page: number;
 }
 
-export type FetchWithNextPageFlag = Promise<{ hasNextPage: boolean }>;
+export type FetchWithNextPageFlag = Promise<{hasNextPage: boolean}>;

@@ -1,2 +1,2 @@
-export * from './reduxHooks'
-export * from './usePagination'
+export * from './reduxHooks';
+export * from './usePagination';

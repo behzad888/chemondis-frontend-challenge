@@ -1,5 +1,5 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
-import { User, UserState } from "utils";
+import {createAction, createReducer} from '@reduxjs/toolkit';
+import {User, UserState} from 'utils';
 
 const initialState = {
   loading: true, //  It's 'true' by default because users are being fetched on the app bootstrap
@@ -7,8 +7,8 @@ const initialState = {
   data: [],
 } as UserState;
 
-export const fetchUsersSuccess = createAction<Array<User>>("users/fetch");
-export const fetchUsersFailure = createAction<Error | string>("users/fail");
+export const fetchUsersSuccess = createAction<Array<User>>('users/fetch');
+export const fetchUsersFailure = createAction<Error | string>('users/fail');
 
 const userReducer = createReducer(initialState, (builder) => {
   builder

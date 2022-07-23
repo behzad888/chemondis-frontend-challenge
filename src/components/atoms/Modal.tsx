@@ -1,10 +1,10 @@
-import clsx from "clsx";
-import React, { forwardRef } from "react";
-import { CSSTransition } from "react-transition-group";
-import { __DEV__ } from "utils";
+import clsx from 'clsx';
+import React, {forwardRef} from 'react';
+import {CSSTransition} from 'react-transition-group';
+import {__DEV__} from 'utils';
 
-import "assets/elements/modal.scss";
-import { Button } from "./Button";
+import 'assets/elements/modal.scss';
+import {Button} from './Button';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
@@ -35,25 +35,22 @@ const Modal = forwardRef<CSSTransition<HTMLElement | undefined>, ModalProps>(
       <>
         {backdrop && show && (
           <div
-            className={clsx("c-modal__backdrop", backdropClassName)}
-            onClick={onHide}
-          ></div>
+            className={clsx('c-modal__backdrop', backdropClassName)}
+            onClick={onHide}></div>
         )}
         <CSSTransition
           ref={ref}
           unmountOnExit
           in={show}
-          clsx="c-modal"
-          timeout={closeDelay!}
-        >
+          clsx='c-modal'
+          timeout={closeDelay!}>
           <div
-            style={{ width: width }}
-            className={clsx("c-modal", className)}
-            {...restProps}
-          >
+            style={{width: width}}
+            className={clsx('c-modal', className)}
+            {...restProps}>
             {title && (
-              <div className="c-modal__header">
-                <div className="c-modal__header-title">{title}</div>
+              <div className='c-modal__header'>
+                <div className='c-modal__header-title'>{title}</div>
                 <Button onClick={onHide}>&times;</Button>
               </div>
             )}
@@ -62,7 +59,7 @@ const Modal = forwardRef<CSSTransition<HTMLElement | undefined>, ModalProps>(
         </CSSTransition>
       </>
     );
-  }
+  },
 );
 
 Modal.defaultProps = {
@@ -72,8 +69,7 @@ Modal.defaultProps = {
 };
 
 if (__DEV__) {
-  Modal.displayName = "Modal";
+  Modal.displayName = 'Modal';
 }
 
-export { Modal };
-
+export {Modal};

@@ -1,8 +1,8 @@
-import { Heading } from "components/atoms";
-import { FilterActions } from "components/organisms";
-import { FetchWithNextPageFlag, PageOption } from "utils";
+import {Heading} from 'components/atoms';
+import {FilterActions} from 'components/organisms';
+import {FetchWithNextPageFlag, PageOption} from 'utils';
 
-import "assets/objects/filter-section.scss";
+import 'assets/objects/filter-section.scss';
 
 type FilterSectionProps = {
   changeFilter: (pageOption: PageOption) => FetchWithNextPageFlag;
@@ -16,8 +16,8 @@ export const FilterSection = ({
   changeFilter,
 }: FilterSectionProps) => {
   return (
-    <section className="c-filter">
-      <div className="c-filter__title">
+    <section className='c-filter'>
+      <div className='c-filter__title'>
         <Heading>{title}</Heading>
         <span>{subText}</span>
       </div>

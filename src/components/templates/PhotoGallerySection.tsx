@@ -1,10 +1,10 @@
-import { Card } from "components/molecules";
+import {Card} from 'components/molecules';
 
-import "assets/objects/gallery-section.scss";
-import { Modal } from "components/atoms";
-import { useEffect, useState } from "react";
-import { Album, Photo, User } from "utils";
-import { PhotoInfoSection } from "./PhotoInfoSection";
+import 'assets/objects/gallery-section.scss';
+import {Modal} from 'components/atoms';
+import {useEffect, useState} from 'react';
+import {Album, Photo, User} from 'utils';
+import {PhotoInfoSection} from './PhotoInfoSection';
 
 interface GallerySectionProps {
   items: Array<Photo>;
@@ -22,9 +22,9 @@ export const PhotoGallerySection = ({
   useEffect(() => {
     if (showPhotoDetail && !window.history.state.title) {
       window.history.pushState(
-        { ...showPhotoDetail, isPhoto: true },
-        "",
-        window.location.href
+        {...showPhotoDetail, isPhoto: true},
+        '',
+        window.location.href,
       );
       window.onpopstate = (e) => {
         if (window.history.state.isPhoto)
@@ -39,24 +39,21 @@ export const PhotoGallerySection = ({
       <Modal
         title={showPhotoDetail?.title}
         show={!!showPhotoDetail}
-        onHide={() => setShowPhotoDetail(null)}
-      >
+        onHide={() => setShowPhotoDetail(null)}>
         {showPhotoDetail && (
           <PhotoInfoSection
             photo={showPhotoDetail}
             album={album}
-            user={user}
-          ></PhotoInfoSection>
+            user={user}></PhotoInfoSection>
         )}
       </Modal>
-      <section className="c-gallery">
+      <section className='c-gallery'>
         {items.map((item) => {
           return (
             <Card
-            onClick={() => setShowPhotoDetail(item)}
+              onClick={() => setShowPhotoDetail(item)}
               key={item.id}
-              imageUrl={item.thumbnailUrl}
-            >
+              imageUrl={item.thumbnailUrl}>
               {item.title}
             </Card>
           );

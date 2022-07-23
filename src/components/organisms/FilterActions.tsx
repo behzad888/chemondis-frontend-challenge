@@ -1,17 +1,17 @@
-import { Button, Select } from "components/atoms";
-import { usePagination } from "hooks";
-import { memo, useCallback, useState } from "react";
-import { FetchWithNextPageFlag, PageOption } from "utils";
+import {Button, Select} from 'components/atoms';
+import {usePagination} from 'hooks';
+import {memo, useCallback, useState} from 'react';
+import {FetchWithNextPageFlag, PageOption} from 'utils';
 
 type AlbumFilterActionsProps = {
   onChangeFilter: (pageOption: PageOption) => FetchWithNextPageFlag;
 };
-function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
+function FilterActionsComponent({onChangeFilter}: AlbumFilterActionsProps) {
   const [pageOption, setPageOption] = usePagination();
   const [hasNextPage, setHasNextPage] = useState(true);
 
   const onChangePageSize = useCallback(
-    async ({ currentTarget }: React.ChangeEvent<HTMLSelectElement>) => {
+    async ({currentTarget}: React.ChangeEvent<HTMLSelectElement>) => {
       let tempPageOption = {
         page: 0,
         size: parseInt(currentTarget.value),
@@ -20,7 +20,7 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
       if (hasNextPage) setHasNextPage(true);
       setPageOption(tempPageOption);
     },
-    [setPageOption, onChangeFilter]
+    [setPageOption, onChangeFilter],
   );
 
   const onChangePage = useCallback(
@@ -30,10 +30,10 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
       };
 
       switch (action) {
-        case "next":
+        case 'next':
           tempPageOption.page += 1;
           break;
-        case "prev":
+        case 'prev':
           tempPageOption.page -= 1;
           setHasNextPage(true);
           break;
@@ -45,29 +45,27 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
         setPageOption(tempPageOption);
       else setHasNextPage(false);
     },
-    [setPageOption, onChangeFilter, pageOption]
+    [setPageOption, onChangeFilter, pageOption],
   );
 
   return (
-    <div className="c-filter__actions">
-      <label htmlFor="page-size">Page Size: </label>
+    <div className='c-filter__actions'>
+      <label htmlFor='page-size'>Page Size: </label>
       <Select
-        id="page-size"
+        id='page-size'
         value={pageOption.size}
-        onChange={onChangePageSize}
-      >
+        onChange={onChangePageSize}>
         <option value={20}>20</option>
         <option value={30}>30</option>
         <option value={50}>50</option>
       </Select>
       <Button
         disabled={pageOption.page <= 0}
-        onClick={() => onChangePage("prev")}
-      >
+        onClick={() => onChangePage('prev')}>
         Prev
       </Button>
       <span>Page: {pageOption.page + 1}</span>
-      <Button disabled={!hasNextPage} onClick={() => onChangePage("next")}>
+      <Button disabled={!hasNextPage} onClick={() => onChangePage('next')}>
         Next
       </Button>
     </div>
@@ -76,4 +74,4 @@ function FilterActionsComponent({ onChangeFilter }: AlbumFilterActionsProps) {
 
 const FilterActions = memo(FilterActionsComponent);
 
-export { FilterActions };
+export {FilterActions};

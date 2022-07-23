@@ -1,31 +1,31 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { Image } from "./Image";
+import {fireEvent, render, screen} from '@testing-library/react';
+import {Image} from './Image';
 
-describe("<Image />", () => {
-  describe("initial state", () => {
-    it("should have default class", () => {
-      const { container } = render(<Image alt="" />);
+describe('<Image />', () => {
+  describe('initial state', () => {
+    it('should have default class', () => {
+      const {container} = render(<Image alt='' />);
       const root = container.firstChild;
 
-      expect(root).toHaveClass("c-image");
-      expect(root).not.toHaveClass("undefined");
+      expect(root).toHaveClass('c-image');
+      expect(root).not.toHaveClass('undefined');
     });
   });
-  describe("props", () => {
-    it("prop: alt and lazy loading", () => {
-      const { container } = render(<Image alt="Alt Image" />);
+  describe('props', () => {
+    it('prop: alt and lazy loading', () => {
+      const {container} = render(<Image alt='Alt Image' />);
       const root = container.firstChild;
 
-      expect(root).toHaveAttribute("alt", "Alt Image");
-      expect(root).toHaveAttribute("loading", "lazy");
+      expect(root).toHaveAttribute('alt', 'Alt Image');
+      expect(root).toHaveAttribute('loading', 'lazy');
     });
 
-    it("prop: multiple attributes", () => {
-      const { container } = render(<Image alt="" src="" id="1" />);
+    it('prop: multiple attributes', () => {
+      const {container} = render(<Image alt='' src='' id='1' />);
       const root = container.firstChild;
-      expect(root).toHaveAttribute("id");
-      expect(root).toHaveAttribute("src");
-      expect(root).toHaveAttribute("alt");
+      expect(root).toHaveAttribute('id');
+      expect(root).toHaveAttribute('src');
+      expect(root).toHaveAttribute('alt');
     });
   });
 });

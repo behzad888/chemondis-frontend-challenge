@@ -1,7 +1,7 @@
-import { FilterSection, AlbumGallerySection, Header } from "components/templates";
-import { useAppSelector } from "hooks";
-import { Fragment, useCallback, useEffect, useState } from "react";
-import { defaultPageOption, Album, getAlbums } from "utils";
+import {FilterSection, AlbumGallerySection, Header} from 'components/templates';
+import {useAppSelector} from 'hooks';
+import {Fragment, useCallback, useEffect, useState} from 'react';
+import {defaultPageOption, Album, getAlbums} from 'utils';
 
 const Albums = () => {
   const [albums, setAlbums] = useState<Array<Album>>([]);
@@ -12,7 +12,7 @@ const Albums = () => {
       const data = await getAlbums(pageOption.page, pageOption.size);
       if (data.length <= 0 && pageOption.size > 0) {
         pageOption.page -= pageOption.size;
-        return { hasNextPage: false };
+        return {hasNextPage: false};
       }
       setAlbums(
         data.map((item) => {
@@ -22,26 +22,25 @@ const Albums = () => {
             username: user.username,
             color: user.color,
           };
-        })
+        }),
       );
-      return { hasNextPage: true };
+      return {hasNextPage: true};
     },
-    [userState]
+    [userState],
   );
 
   useEffect(() => {
     if (!userState.loading) fetchAlbums();
-  }, [userState,fetchAlbums]);
+  }, [userState, fetchAlbums]);
 
   return (
     <Fragment>
-      <Header title="Frontend Challenge"></Header>
-      <div className="c-container">
+      <Header title='Frontend Challenge'></Header>
+      <div className='c-container'>
         <FilterSection
-          title="Albums"
-          subText="View Albums"
-          changeFilter={fetchAlbums}
-        ></FilterSection>
+          title='Albums'
+          subText='View Albums'
+          changeFilter={fetchAlbums}></FilterSection>
         <AlbumGallerySection items={albums}></AlbumGallerySection>
       </div>
     </Fragment>
