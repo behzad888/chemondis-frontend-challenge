@@ -31,11 +31,11 @@ export async function getUsers() {
 }
 
 export async function getAlbums(skip: number = 0, take: number = 20) {
-  return await getApi<Array<Album>>(`albums?_start=${skip}&_limit=${take}`);
+  return await getApi<Array<Album>>(`albums?_start=${skip * take}&_limit=${take}`);
 }
 export async function getAlbum(id: number) {
   return await getApi<Album>(`albums/${id}`);
 }
 export async function getPhotos(albumId: number,skip: number = 0, take: number = 20) {
-  return await getApi<Array<Photo>>(`photos?albumId=${albumId}&_start=${skip}&_limit=${take}`);
+  return await getApi<Array<Photo>>(`photos?albumId=${albumId}&_start=${skip * take}&_limit=${take}`);
 }
