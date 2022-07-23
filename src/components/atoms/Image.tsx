@@ -14,7 +14,6 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
       ref={ref}
       className={clsx("c-image", className)}
       loading="lazy"
-      role="img"
       alt={alt}
       {...restProps}
     />

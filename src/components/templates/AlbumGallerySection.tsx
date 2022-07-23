@@ -1,9 +1,9 @@
 import { Card } from "components/molecules";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "assets/objects/gallery-section.scss";
-import { Album } from "utils";
 import { useCallback } from "react";
+import { Album } from "utils";
 
 interface GallerySectionProps {
   items: Array<Album>;

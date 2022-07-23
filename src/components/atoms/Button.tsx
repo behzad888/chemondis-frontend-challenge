@@ -14,7 +14,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   return (
     <button
-      role="button"
       ref={ref}
       className={clsx("c-btn", className)}
       aria-disabled={restProps.disabled}

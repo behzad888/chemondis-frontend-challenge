@@ -16,7 +16,6 @@ describe("<Card />", () => {
       const { container } = render(<Card imageUrl="/fake.png"/>);
       const root = container.firstChild?.firstChild;
 
-      expect(root).toHaveAttribute("role",'img');
       expect(root).toHaveAttribute("src",'/fake.png');
     });
     it("prop: headerText", () => {

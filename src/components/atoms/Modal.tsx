@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import React, { forwardRef, MouseEvent, MouseEventHandler } from "react";
-import { __DEV__ } from "utils";
+import React, { forwardRef } from "react";
 import { CSSTransition } from "react-transition-group";
+import { __DEV__ } from "utils";
 
 import "assets/elements/modal.scss";
 import { Button } from "./Button";
@@ -76,3 +76,4 @@ if (__DEV__) {
 }
 
 export { Modal };
+

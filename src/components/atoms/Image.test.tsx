@@ -9,7 +9,6 @@ describe("<Image />", () => {
 
       expect(root).toHaveClass("c-image");
       expect(root).not.toHaveClass("undefined");
-      expect(root).toHaveAttribute("role",'img');
     });
   });
   describe("props", () => {

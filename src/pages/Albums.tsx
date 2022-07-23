@@ -31,7 +31,7 @@ const Albums = () => {
 
   useEffect(() => {
     if (!userState.loading) fetchAlbums();
-  }, [userState]);
+  }, [userState,fetchAlbums]);
 
   return (
     <Fragment>

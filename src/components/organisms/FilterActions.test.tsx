@@ -8,7 +8,7 @@ describe("<FilterActions />", () => {
       const { getByRole, getAllByRole } = render(
         <FilterActions onChangeFilter={handlerFilterChange} />
       );
-      const select = getByRole("listbox");
+      const select = getByRole("combobox");
       const button = getAllByRole("button");
 
       expect(select).toHaveValue("20");

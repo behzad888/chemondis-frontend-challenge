@@ -48,7 +48,7 @@ describe("<Select />", () => {
             <option value={10}>Ten</option>
           </Select>
         );
-        const trigger = screen.getByRole("listbox");
+        const trigger = screen.getByRole("combobox");
         act(() => {
           trigger.focus();
         });
@@ -67,13 +67,13 @@ describe("<Select />", () => {
           <option value={10}>Ten</option>
         </Select>
       );
-      const listbox = getByRole("listbox");
+      const combobox = getByRole("combobox");
       act(() => {
-        listbox.focus();
+        combobox.focus();
       });
 
       act(() => {
-        listbox.blur();
+        combobox.blur();
       });
 
       expect(handleBlur).toHaveBeenCalledTimes(1);
@@ -107,7 +107,7 @@ describe("<Select />", () => {
       const titleSelect = getByTestId("label");
       userEvent.click(titleSelect);
 
-      expect(getByRole("listbox")).toHaveFocus();
+      expect(getByRole("combobox")).toHaveFocus();
     });
   });
   describe("props", () => {
@@ -127,7 +127,7 @@ describe("<Select />", () => {
     it("prop: autoFocus", () => {
       const { getByRole } = render(<Select defaultValue="" autoFocus />);
 
-      expect(getByRole("listbox")).toHaveFocus();
+      expect(getByRole("combobox")).toHaveFocus();
     });
 
     it("prop: onChange", () => {
@@ -139,7 +139,7 @@ describe("<Select />", () => {
           <option value="cat">Cat</option>
         </Select>
       );
-      userEvent.selectOptions(getByRole("listbox"), "dog");
+      userEvent.selectOptions(getByRole("combobox"), "dog");
 
       expect(onChangeHandler).toBeCalled();
     });
@@ -147,12 +147,12 @@ describe("<Select />", () => {
       it('sets aria-disabled="true" when component is disabled', () => {
         const { getByRole } = render(<Select disabled></Select>);
 
-        expect(getByRole("listbox")).toHaveAttribute("aria-disabled");
+        expect(getByRole("combobox")).toHaveAttribute("aria-disabled");
       });
-      it('renders an element with listbox behavior', () => {
+      it('renders an element with combobox behavior', () => {
         const { getByRole } = render(<Select defaultValue="" />);
   
-        expect(getByRole('listbox')).toBeVisible();
+        expect(getByRole('combobox')).toBeVisible();
       });
     });
   });

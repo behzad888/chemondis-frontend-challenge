@@ -21,7 +21,7 @@ const Photos = () => {
 
   const user = useMemo(
     () => userState.data.find((c) => c.id === parseInt(userId || "0")),
-    [userState]
+    [userState, userId]
   );
 
   const fetchPhotos = useCallback(
@@ -38,7 +38,7 @@ const Photos = () => {
       setPhotos(data);
       return { hasNextPage: true };
     },
-    [albumId, userId]
+    [albumId]
   );
   const fetchAlbum = useCallback(async () => {
     const data = await getAlbum(parseInt(albumId!));
@@ -48,7 +48,8 @@ const Photos = () => {
   useEffect(() => {
     fetchPhotos();
     if (!location.state) fetchAlbum();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchPhotos, fetchAlbum]);
 
   return (
     <Fragment>
@@ -64,8 +65,12 @@ const Photos = () => {
             changeFilter={fetchPhotos}
           ></FilterSection>
         </Card>
-        {user && album &&(
-          <PhotoGallerySection items={photos} album={album} user={user}></PhotoGallerySection>
+        {user && album && (
+          <PhotoGallerySection
+            items={photos}
+            album={album}
+            user={user}
+          ></PhotoGallerySection>
         )}
       </div>
     </Fragment>

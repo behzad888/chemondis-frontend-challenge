@@ -16,13 +16,7 @@ describe("<Button />", () => {
       const root = container.firstChild;
 
       expect(root).toHaveAttribute("type", "button");
-    });
-    it("should have button role", () => {
-      const { container } = render(<Button />);
-      const root = container.firstChild;
-
-      expect(root).toHaveAttribute("role", "button");
-    });
+    }); 
   });
   describe("props", () => {
     it("prop: type", () => {
