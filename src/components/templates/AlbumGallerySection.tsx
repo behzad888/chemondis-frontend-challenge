@@ -29,7 +29,7 @@ export const AlbumGallerySection = ({ items }: GallerySectionProps) => {
             key={item.id}
             onClick={() => goToPhotoPage(item)}
             headerText={item.title}
-            imageUrl={`https://via.placeholder.com/150/${item.color}`}
+            imageUrl={`${process.env.REACT_APP_PLACEHOLDER_API_URL}/150/${item.color}`}
           >
             {item.username}
           </Card>

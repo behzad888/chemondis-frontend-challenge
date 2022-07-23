@@ -16,7 +16,7 @@ export const AlbumInfoSection = ({ user, album }: AlbumInfoSectionProps) => {
       </Heading>
       <Heading className="c-album-info__title">{album?.title}</Heading>
       <Image
-        src={"https://via.placeholder.com/150/" + user.color}
+        src={`${process.env.REACT_APP_PLACEHOLDER_API_URL}/150/${user.color}`}
         alt={album.title}
       />
     </section>
