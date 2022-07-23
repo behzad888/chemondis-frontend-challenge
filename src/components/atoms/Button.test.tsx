@@ -8,6 +8,7 @@ describe("<Button />", () => {
       const root = container.firstChild;
 
       expect(root).toHaveClass("c-btn");
+      expect(root).not.toHaveClass("undefined");
     });
 
     test("should button type", () => {
@@ -60,20 +61,6 @@ describe("<Button />", () => {
       };
       render(<Button ref={buttonref} />);
       expect(buttonref.current).toBeDefined();
-    });
-  });
-  describe("render", () => {
-    test("should render without crashing", () => {
-      render(
-        <Button>
-          <Button>
-            <Button>
-              <Button></Button>
-            </Button>
-          </Button>
-        </Button>
-      );
-      expect(screen).toBeDefined();
     });
   });
   describe("events", () => {

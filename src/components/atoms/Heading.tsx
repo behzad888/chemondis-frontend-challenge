@@ -21,7 +21,6 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>((props, ref) => {
 });
 
 Heading.defaultProps = {
-  className: "c-heading",
   priority: 1,
 };
 if (__DEV__) {
