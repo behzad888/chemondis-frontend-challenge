@@ -1,0 +1,16 @@
+@import "../tools/flexbox";
+.c-page-not-found{
+    margin: 100px;
+    @include flex-content-align(center, center);
+    @include flex-direction(column);
+
+ &--middle {
+  margin-top: -90px;
+  font-size: 250px;
+  font-weight: bold;
+}
+
+ &--bottom {
+  font-size: 30px;
+}
+}

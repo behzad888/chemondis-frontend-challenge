@@ -8,6 +8,7 @@ import {useAppDispatch} from 'hooks';
 import {useEffect} from 'react';
 import {fetchUsersFailure, fetchUsersSuccess} from 'redux-store';
 import {getUsers} from 'utils';
+import PageNotFound from 'pages/PageNotFound';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Albums />} />
         <Route path='/albums/:albumId/photos/:userId/' element={<Photos />} />
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </Router>
   );
