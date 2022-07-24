@@ -5,26 +5,34 @@ import {defaultPageOption, Album, getAlbums} from 'utils';
 
 const Albums = () => {
   const [albums, setAlbums] = useState<Array<Album>>([]);
+  const [loading, setLoading] = useState(true);
   const userState = useAppSelector((state) => state.userReducer);
 
   const fetchAlbums = useCallback(
     async (pageOption = defaultPageOption) => {
-      const data = await getAlbums(pageOption.page, pageOption.size);
-      if (data.length <= 0 && pageOption.size > 0) {
-        pageOption.page -= pageOption.size;
+      try {
+        const data = await getAlbums(pageOption.page, pageOption.size);
+        if (data.length <= 0 && pageOption.size > 0) {
+          pageOption.page -= pageOption.size;
+          return {hasNextPage: false};
+        }
+        setAlbums(
+          data.map((item) => {
+            let user = userState.data.find((c) => c.id === item.userId)!;
+            return {
+              ...item,
+              username: user.username,
+              color: user.color,
+            };
+          }),
+        );
+        return {hasNextPage: true};
+      } catch (error) {
+        setAlbums([]);
         return {hasNextPage: false};
+      } finally {
+        setLoading(false);
       }
-      setAlbums(
-        data.map((item) => {
-          let user = userState.data.find((c) => c.id === item.userId)!;
-          return {
-            ...item,
-            username: user.username,
-            color: user.color,
-          };
-        }),
-      );
-      return {hasNextPage: true};
     },
     [userState],
   );
@@ -41,7 +49,7 @@ const Albums = () => {
           title='Albums'
           subText='View Albums'
           changeFilter={fetchAlbums}></FilterSection>
-        <AlbumGallerySection items={albums}></AlbumGallerySection>
+        {!loading && <AlbumGallerySection items={albums}></AlbumGallerySection>}
       </div>
     </Fragment>
   );

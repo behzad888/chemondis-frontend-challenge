@@ -15,6 +15,7 @@ const Photos = () => {
   const location = useLocation();
 
   const [photos, setPhotos] = useState<Array<Photo>>([]);
+  const [loading, setLoading] = useState(true);
 
   const [album, setAlbum] = useState<Album | null>(location.state as any);
   const userState = useAppSelector((state) => state.userReducer);
@@ -26,17 +27,24 @@ const Photos = () => {
 
   const fetchPhotos = useCallback(
     async (pageOption = defaultPageOption) => {
-      const data = await getPhotos(
-        parseInt(albumId!),
-        pageOption.page,
-        pageOption.size,
-      );
-      if (data.length <= 0 && pageOption.size > 0) {
-        if (pageOption.page !== 0) pageOption.page -= pageOption.size;
+      try {
+        const data = await getPhotos(
+          parseInt(albumId!),
+          pageOption.page,
+          pageOption.size,
+        );
+        if (data.length <= 0 && pageOption.size > 0) {
+          if (pageOption.page !== 0) pageOption.page -= pageOption.size;
+          return {hasNextPage: false};
+        }
+        setPhotos(data);
+        return {hasNextPage: true};
+      } catch (error) {
+        setPhotos([]);
         return {hasNextPage: false};
+      } finally {
+        setLoading(false);
       }
-      setPhotos(data);
-      return {hasNextPage: true};
     },
     [albumId],
   );
@@ -67,10 +75,12 @@ const Photos = () => {
             subText='View Photos'
             changeFilter={fetchPhotos}></FilterSection>
         </Card>
+        {!loading && (
           <PhotoGallerySection
             items={photos}
             album={album}
             user={user}></PhotoGallerySection>
+        )}
       </div>
     </Fragment>
   );
