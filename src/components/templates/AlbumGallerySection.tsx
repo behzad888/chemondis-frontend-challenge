@@ -14,7 +14,7 @@ export const AlbumGallerySection = ({items}: GallerySectionProps) => {
 
   const goToPhotoPage = useCallback(
     (item: Album) => {
-      navigate('/' + item.userId + '/' + item.id, {
+      navigate('/albums' + item.id + '/photos' + item.userId, {
         state: item,
       });
     },

@@ -28,7 +28,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Albums />} />
-        <Route path='/:userId/:albumId' element={<Photos />} />
+        <Route path='/albums/:albumId/photos/:userId/' element={<Photos />} />
       </Routes>
     </Router>
   );
