@@ -19,11 +19,15 @@ export const AlbumInfoSection = ({user, album}: AlbumInfoSectionProps) => {
           {user?.name} ({user?.username})
         </Heading>
       )}
-      <Heading className='c-album-info__title'>{album?.title}</Heading>
-      <Image
-        src={`${process.env.REACT_APP_PLACEHOLDER_API_URL}/150/${user?.color}`}
-        alt={album?.title || ''}
-      />
+      {album && (
+        <>
+          <Heading className='c-album-info__title'>{album?.title}</Heading>
+          <Image
+            src={`${process.env.REACT_APP_PLACEHOLDER_API_URL}/150/${user?.color}`}
+            alt={album?.title || ''}
+          />
+        </>
+      )}
     </section>
   );
 };
