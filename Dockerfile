@@ -1,20 +1,20 @@
 
-# specify a base image
-FROM node:alpine
+FROM node:16-alpine
 
 # setup working directory
 WORKDIR '/usr/src/app'
 
-# add `/usr/src/app/node_modules/.bin` to $PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# Install app dependencies
+COPY package*.json ./
 
-# install and cache app dependencies
-ADD package.json /usr/src/app/package.json
 RUN yarn install --silent
 RUN yarn add global react-scripts@5.0.1
 
-# add app
-ADD . /usr/src/app
+# Bundle app source
+COPY . .
+
+#Expose port and start application
+EXPOSE 3000
 
 # start app
 CMD ["yarn", "start"]
