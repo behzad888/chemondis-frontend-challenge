@@ -1,15 +1,15 @@
 import {Card} from 'components/molecules';
 
 import 'assets/objects/gallery-section.scss';
-import {Modal} from 'components/atoms';
+import {Heading, Modal} from 'components/atoms';
 import {useEffect, useState} from 'react';
 import {Album, Photo, User} from 'utils';
 import {PhotoInfoSection} from './PhotoInfoSection';
 
 interface GallerySectionProps {
   items: Array<Photo>;
-  user: User;
-  album: Album;
+  user?: User;
+  album: Album | null;
 }
 
 export const PhotoGallerySection = ({
@@ -40,7 +40,7 @@ export const PhotoGallerySection = ({
         title={showPhotoDetail?.title}
         show={!!showPhotoDetail}
         onHide={() => setShowPhotoDetail(null)}>
-        {showPhotoDetail && (
+        {album && user && showPhotoDetail && (
           <PhotoInfoSection
             photo={showPhotoDetail}
             album={album}
@@ -48,6 +48,7 @@ export const PhotoGallerySection = ({
         )}
       </Modal>
       <section className='c-gallery'>
+        {items.length <= 0 && <Heading>There is no more photo in this album</Heading>}
         {items.map((item) => {
           return (
             <Card

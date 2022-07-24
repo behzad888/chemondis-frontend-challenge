@@ -9,15 +9,20 @@ const APIClient = axios.create({
 
 function normalizeResponse<T>(response: AxiosResponse<T, any>) {
   if (response.status !== 200) {
-    return Promise.reject(response);
+    throw new Error(response.statusText);
   }
   return response.data;
 }
 
 async function getApi<T>(endpoint: string): Promise<T> {
-  const resposne = await APIClient.get(endpoint);
+  try {
+    const resposne = await APIClient.get(endpoint);
 
-  return normalizeResponse(resposne);
+    return normalizeResponse(resposne);
+  } catch (error) {
+    if (error instanceof Error) throw new Error(error.message);
+    return Promise.reject();
+  }
 }
 
 export async function getUsers() {

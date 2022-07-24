@@ -32,7 +32,7 @@ const Photos = () => {
         pageOption.size,
       );
       if (data.length <= 0 && pageOption.size > 0) {
-        pageOption.page -= pageOption.size;
+        if (pageOption.page !== 0) pageOption.page -= pageOption.size;
         return {hasNextPage: false};
       }
       setPhotos(data);
@@ -41,8 +41,13 @@ const Photos = () => {
     [albumId],
   );
   const fetchAlbum = useCallback(async () => {
-    const data = await getAlbum(parseInt(albumId!));
-    setAlbum(data);
+    try {
+      const data = await getAlbum(parseInt(albumId!));
+      setAlbum(data);
+    } catch (error) {
+      setAlbum(null);
+      setPhotos([]);
+    }
   }, [albumId]);
 
   useEffect(() => {
@@ -55,21 +60,17 @@ const Photos = () => {
     <Fragment>
       <Header title='Frontend Challenge'></Header>
       <div className='c-container c-photo-page'>
-        {user && album && (
-          <AlbumInfoSection user={user} album={album}></AlbumInfoSection>
-        )}
+        <AlbumInfoSection user={user} album={album}></AlbumInfoSection>
         <Card>
           <FilterSection
             title='Photos'
             subText='View Photos'
             changeFilter={fetchPhotos}></FilterSection>
         </Card>
-        {user && album && (
           <PhotoGallerySection
             items={photos}
             album={album}
             user={user}></PhotoGallerySection>
-        )}
       </div>
     </Fragment>
   );

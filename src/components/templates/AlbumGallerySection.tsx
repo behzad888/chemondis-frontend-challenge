@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import 'assets/objects/gallery-section.scss';
 import {useCallback} from 'react';
 import {Album} from 'utils';
+import {Heading} from 'components/atoms';
 
 interface GallerySectionProps {
   items: Array<Album>;
@@ -23,6 +24,7 @@ export const AlbumGallerySection = ({items}: GallerySectionProps) => {
 
   return (
     <section className='c-gallery'>
+      {items.length <= 0 && <Heading>There is no more albums</Heading>}
       {items.map((item) => {
         return (
           <Card
