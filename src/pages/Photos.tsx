@@ -27,48 +27,47 @@ const Photos = () => {
 
   const fetchPhotos = useCallback(
     async (pageOption = defaultPageOption) => {
-      try {
-        const data = await getPhotos(
-          parseInt(albumId!),
-          pageOption.page,
-          pageOption.size,
-        );
-        if (data.length <= 0 && pageOption.size > 0) {
-          if (pageOption.page !== 0) pageOption.page -= pageOption.size;
-          return {hasNextPage: false};
-        }
-        setPhotos(data);
-        return {hasNextPage: true};
-      } catch (error) {
-        setPhotos([]);
+      const data = await getPhotos(
+        parseInt(albumId!),
+        pageOption.page,
+        pageOption.size,
+      );
+      if (data.length <= 0 && pageOption.size > 0) {
+        if (pageOption.page !== 0) pageOption.page -= pageOption.size;
         return {hasNextPage: false};
-      } finally {
-        setLoading(false);
       }
+      setPhotos(data);
+      setLoading(false);
+      return {hasNextPage: true};
     },
     [albumId],
   );
   const fetchAlbum = useCallback(async () => {
     try {
-      const data = await getAlbum(parseInt(albumId!));
+      let data: Album;
+      if (location.state) data = location.state as Album;
+      else data = await getAlbum(parseInt(albumId!));
       setAlbum(data);
     } catch (error) {
       setAlbum(null);
       setPhotos([]);
+      setLoading(false);
     }
-  }, [albumId]);
+  }, [albumId, location.state]);
 
   useEffect(() => {
+    fetchAlbum();
     fetchPhotos();
-    if (!location.state) fetchAlbum();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [fetchPhotos, fetchAlbum]);
 
   return (
     <Fragment>
       <Header title='Frontend Challenge'></Header>
       <div className='c-container c-photo-page'>
-        <AlbumInfoSection user={user} album={album}></AlbumInfoSection>
+        {!loading && (
+          <AlbumInfoSection user={user} album={album}></AlbumInfoSection>
+        )}
         <Card>
           <FilterSection
             title='Photos'
