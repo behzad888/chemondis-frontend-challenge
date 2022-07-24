@@ -8,6 +8,7 @@ This is a Typescript React App with a custom layout and design for consuming the
 https://jsonplaceholder.typicode.com/photos?albumId=5&_start=0&_limit=5
  - Information on users: https://jsonplaceholder.typicode.com/users
 
+Contains page with list of albums and photos to navigate between them. First of page is the list of albums, you can click on album to see more details and teir photos.
 
 ## Tech Stack
  - `Typescript` as the primary language
